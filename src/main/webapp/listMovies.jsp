@@ -10,7 +10,7 @@
 
     <form method="get" action="${pageContext.request.contextPath}/listMovies">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="searchTerm" placeholder="Buscar..">
+            <input type="text" class="form-control" name="searchTerm" placeholder="Buscar...">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Buscar</button>
             </div>

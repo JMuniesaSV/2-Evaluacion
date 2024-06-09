@@ -17,7 +17,7 @@ public class LogoutServlet extends HttpServlet {
             response.sendRedirect("/Videoclub");
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ServletException("Error loading login view", e);
+            throw new ServletException("Error", e);
         }
     }
 }

@@ -30,14 +30,14 @@ public class ChangePasswordServlet extends HttpServlet {
                 if (currentPassword.equals(storedPassword)) {
                     dao.updatePassword(idUser, newPassword);
                 } else{
-                    throw new Exception("The current password is incorrect.");
+                    throw new Exception("Contraseña incorrecta");
                 }
 
             });
-            response.sendRedirect("profile.jsp?success=" + URLEncoder.encode("Password updated successfully", "UTF-8"));
+            response.sendRedirect("profile.jsp?success=" + URLEncoder.encode("La contraseña se ha actualizado correctamente", "UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("profile.jsp?error=" + URLEncoder.encode("Error changing the password: " + e.getMessage(), "UTF-8"));
+            response.sendRedirect("profile.jsp?error=" + URLEncoder.encode("Error cambiando la contraseña: " + e.getMessage(), "UTF-8"));
         }
     }
 }

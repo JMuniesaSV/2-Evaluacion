@@ -11,14 +11,14 @@
     <!-- Barra de búsqueda -->
     <form action="listRatings" method="get" class="mb-3">
         <div class="input-group">
-            <input type="text" class="form-control" name="searchTerm" placeholder="Buscar..">
-            <button class="btn btn-primary" type="submit">Buscar</button>
+            <input type="text" class="form-control" name="searchTerm" placeholder="Buscar...">
+            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
         </div>
     </form>
 
     <a href="${pageContext.request.contextPath}/addRating" class="btn btn-primary">Añadir Calificación</a>
 
-    <table id="ratingsTable" class="" data-toggle="table" data-pagination="true" data-sortable="true">
+    <table id="ratingsTable" class="" data-toggle="table" data-pagination="false" data-sortable="true">
         <thead class="table-dark">
         <tr>
             <th data-align="center" data-halign="center" data-sortable="true">Rating</th>

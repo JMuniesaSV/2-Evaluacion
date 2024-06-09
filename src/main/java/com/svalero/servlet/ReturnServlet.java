@@ -40,7 +40,7 @@ public class ReturnServlet extends HttpServlet {
             response.sendRedirect("listLoans?success= Movie returned");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Error processing book return");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Error procesando la devolucion de la pelicula.");
             }
         }
     }

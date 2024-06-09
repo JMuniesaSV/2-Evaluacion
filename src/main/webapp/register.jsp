@@ -8,14 +8,14 @@
             const passwordField = document.getElementById('password');
             const password = passwordField.value;
 
-            // Convierte la contraseña a un ArrayBuffer
+
             const encoder = new TextEncoder();
             const data = encoder.encode(password);
 
-            // Calcula el hash SHA-1
+
             const hashBuffer = await crypto.subtle.digest('SHA-1', data);
 
-            // Convierte el ArrayBuffer a una cadena hexadecimal
+
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
@@ -56,11 +56,11 @@
             <div class="panel">
                 <form action="register" method="post">
                     <div class="form-group mb-3">
-                        <label for="firstName">First Name</label>
+                        <label for="firstName">Nombre</label>
                         <input type="text" class="form-control" id="firstName" name="firstName" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="lastName">Last Name</label>
+                        <label for="lastName">Apellidos</label>
                         <input type="text" class="form-control" id="lastName" name="lastName" required>
                     </div>
                     <div class="form-group mb-3">
@@ -68,11 +68,11 @@
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="phoneNumber">Phone Number</label>
+                        <label for="phoneNumber">Número de teléfono</label>
                         <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="password">Password</label>
+                        <label for="password">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                     <button id="signupButton" class="w-100 btn btn-lg btn-primary mb-3" type="submit">Sign Up</button>

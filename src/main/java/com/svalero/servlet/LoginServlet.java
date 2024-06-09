@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ServletException("Error loading login view", e);
+            throw new ServletException("Error cargando el login", e);
         }
     }
     
@@ -51,15 +51,15 @@ public class LoginServlet extends HttpServlet {
                     // response.sendRedirect("listMovies");
                 } else {
                     response.setStatus(HttpServletResponse.SC_CONFLICT);
-                    response.getWriter().write("Incorrect password");
+                    response.getWriter().write("Contraseña incorrecta");
                 }
             } else {
                 response.setStatus(HttpServletResponse.SC_CONFLICT);
-                response.getWriter().write("Account not registered");
+                response.getWriter().write("Cuenta no registrada");
             }
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().write("Registration failed");
+            response.getWriter().write("Algo salió mal");
         }
     }
 }

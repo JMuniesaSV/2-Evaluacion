@@ -20,7 +20,7 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("/register.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ServletException("Error loading login view", e);
+            throw new ServletException("Error cargando el login", e);
         }
     }
 
@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 
             if (emailExists) {
                 response.setStatus(HttpServletResponse.SC_CONFLICT);
-                response.getWriter().write("Email already in use");
+                response.getWriter().write("Email ya en uso");
             } else {
                 Database.getInstance().withExtension(UsersDao.class, dao -> {
                     dao.addUser(firstName, lastName, email, phoneNumber, password);
@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
             }
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().write("Registration failed");
+            response.getWriter().write("Algo salió mal");
         }
     }
 }

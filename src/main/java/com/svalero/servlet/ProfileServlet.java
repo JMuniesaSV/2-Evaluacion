@@ -26,7 +26,7 @@ public class ProfileServlet extends HttpServlet {
             request.setAttribute("user", user);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         } catch (Exception e) {
-            throw new ServletException("Error retrieving user details", e);
+            throw new ServletException("Error", e);
         }
     }
 }

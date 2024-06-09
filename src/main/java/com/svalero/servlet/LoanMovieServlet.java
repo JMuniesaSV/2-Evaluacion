@@ -17,12 +17,10 @@ public class LoanMovieServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getSession().getAttribute("idUser") == null) {
-            // Redirect to login if the user is not logged in
-            response.sendRedirect("/login?message=" + URLEncoder.encode("Please, sign in to loan a movie.", StandardCharsets.UTF_8));
+            response.sendRedirect("/login?message=" + URLEncoder.encode("Inicia sesión para alquilar una película.", StandardCharsets.UTF_8));
             return;
         }
         if (request.getParameter("idLoan") != null) {
-            // Modifying loan using idLoan
             try {
             Database.getInstance().inTransaction(handle -> {
                 int idLoan = Integer.parseInt(request.getParameter("idLoan"));
@@ -36,7 +34,6 @@ public class LoanMovieServlet extends HttpServlet {
                 response.sendRedirect("error?message=" + URLEncoder.encode(e.getMessage(), StandardCharsets.UTF_8));
             }
         } else {
-            // Modifying loan using idUser and idMovie
             int idMovie = Integer.parseInt(request.getParameter("idMovie"));
             int idUser = Integer.parseInt(request.getSession().getAttribute("idUser").toString());
             String action = request.getParameter("action");
@@ -53,7 +50,7 @@ public class LoanMovieServlet extends HttpServlet {
                         }
 
                         java.sql.Date startDate = new java.sql.Date(System.currentTimeMillis());
-                        java.sql.Date expectedDate = new java.sql.Date(System.currentTimeMillis() + 604800000); // 7 days
+                        java.sql.Date expectedDate = new java.sql.Date(System.currentTimeMillis() + 604800000); // 7 dias en milisegundos
                         loansDao.addLoan(idMovie, idUser, startDate, expectedDate);
                     } else if ("return".equals(action)) {
                         java.sql.Date returnDate = new java.sql.Date(System.currentTimeMillis());

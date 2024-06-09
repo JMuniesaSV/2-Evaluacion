@@ -16,17 +16,14 @@
             const passwordCurrent = passwordFieldCurrent.value;
             const passwordNew = passwordFieldNew.value;
 
-            // Convierte la contraseña a un ArrayBuffer
             const encoder1 = new TextEncoder();
             const encoder2 = new TextEncoder();
             const data1 = encoder1.encode(passwordCurrent);
             const data2 = encoder2.encode(passwordNew);
 
-            // Calcula el hash SHA-1
             const hashBuffer1 = await crypto.subtle.digest('SHA-1', data1);
             const hashBuffer2 = await crypto.subtle.digest('SHA-1', data2);
 
-            // Convierte el ArrayBuffer a una cadena hexadecimal
             const hashArray1 = Array.from(new Uint8Array(hashBuffer1));
             const hashArray2 = Array.from(new Uint8Array(hashBuffer2));
             const hashHex1 = hashArray1.map(b => b.toString(16).padStart(2, '0')).join('');
@@ -55,11 +52,11 @@
     <div id="result"></div>
 
     <div class="form-group">
-        <label for="firstName">First Name:</label>
+        <label for="firstName">NOmbre:</label>
         <input type="text" id="firstName" name="firstName" class="form-control" value="${user.firstName}" readonly disabled>
     </div>
     <div class="form-group">
-        <label for="lastName">Last Name:</label>
+        <label for="lastName">Apellidos:</label>
         <input type="text" id="lastName" name="lastName" class="form-control" value="${user.lastName}" readonly disabled>
     </div>
     <div class="form-group">
@@ -67,7 +64,7 @@
         <input type="email" id="email" name="email" class="form-control" value="${user.email}" readonly disabled>
     </div>
     <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
+        <label for="phoneNumber">Número de teléfono:</label>
         <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="${user.phoneNumber}" readonly disabled>
     </div>
 
@@ -75,14 +72,14 @@
 
     <form id="changePass" action="changePassword" method="POST" class="mt-3">
         <div class="form-group">
-            <label for="currentPassword">Current Password:</label>
+            <label for="currentPassword">Contraseña actual:</label>
             <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
         </div>
         <div class="form-group">
-            <label for="newPassword">New Password:</label>
+            <label for="newPassword">Nueva Contraseña:</label>
             <input type="password" class="form-control" id="newPassword" name="newPassword" required>
         </div>
-        <button type="submit" class="btn btn-success">Change Password</button>
+        <button type="submit" class="btn btn-success">Cambiar Contraseña</button>
     </form>
 </main>
 </body>

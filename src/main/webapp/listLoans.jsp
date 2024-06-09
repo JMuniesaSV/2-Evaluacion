@@ -8,15 +8,15 @@
 <main class="container mt-5">
     <h1 class="text-center mb-3">Alquileres activos</h1>
 
-    <!-- Barra de búsqueda -->
+
     <form action="listLoans" method="get" class="mb-3">
         <div class="input-group">
-            <input type="text" class="form-control" name="searchTerm" placeholder="Buscar por título o fecha">
-            <button class="btn btn-primary" type="submit">Buscar</button>
+            <input type="text" class="form-control" name="searchTerm" placeholder="Buscar...">
+            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
         </div>
     </form>
 
-    <table class="" data-toggle="table" data-pagination="true" data-sortable="true">
+    <table class="" data-toggle="table" data-pagination="false" data-sortable="true">
         <thead class="table-dark">
         <tr>
             <th data-align="center" data-halign="center" data-sortable="true">Titulo</th>

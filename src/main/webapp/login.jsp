@@ -8,14 +8,10 @@
             const passwordField = document.getElementById('floatingPassword');
             const password = passwordField.value;
 
-            // Convierte la contraseña a un ArrayBuffer
             const encoder = new TextEncoder();
             const data = encoder.encode(password);
 
-            // Calcula el hash SHA-1
             const hashBuffer = await crypto.subtle.digest('SHA-1', data);
-
-            // Convierte el ArrayBuffer a una cadena hexadecimal
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
@@ -47,7 +43,7 @@
 <body>
     <header class="mb-5 mt-3">
         <div class="text-center">
-            <h1 class="display-1"><a href="login" class="no-link"><i class="bi bi-camera-reels-fill"></i>2ªEv Programación</a></h1>
+            <h1 class="display-1"><a href="login" class="no-link"><i class="bi bi-camera-reels-fill p-3"></i>2ªEv Programación</a></h1>
         </div>
     </header>
     <main class="row">
@@ -62,13 +58,13 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
-                        <label for="floatingPassword">Password</label>
+                        <label for="floatingPassword">Contraseña</label>
                     </div>
 
-                    <button class="btn btn-lg btn-primary w-100" type="submit">Sign In</button>
+                    <button class="btn btn-lg btn-primary w-100" type="submit">Iniciar Sesion</button>
                 </form>
                 <div class="mt-3">
-                    No account yet? <a href="register">Sign up here</a>
+                    No tienes cuenta? <a href="register">Registrate aqui</a>
                 </div>
                 <br/>
                 <div id="result"></div>

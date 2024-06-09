@@ -12,7 +12,7 @@
         <div class="mb-3">
             <label for="idMovie" class="form-label">Película</label>
             <select class="form-select" id="idMovie" name="idMovie" required>
-                <!-- Aquí asumimos que has pasado una lista de películas a la JSP -->
+
                 <c:forEach var="movie" items="${movies}">
                     <option value="${movie.idMovie}">${movie.title}</option>
                 </c:forEach>
