@@ -35,9 +35,9 @@
                 },
                 error: function(xhr) {
                     if (xhr.status === 409) {
-                        $("#result").html("<div class='alert alert-danger' role='alert'>Email already in use.</div>");
+                        $("#result").html("<div class='alert alert-danger' role='alert'>Correo ya en uso</div>");
                     } else {
-                        $("#result").html("<div class='alert alert-danger' role='alert'>Error during registration process .</div>");
+                        $("#result").html("<div class='alert alert-danger' role='alert'>Algo salió mal</div>");
                     }
                 }
             });

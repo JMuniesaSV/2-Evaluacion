@@ -1,6 +1,7 @@
 package com.svalero.servlet;
 
 import com.svalero.dao.Database;
+import com.svalero.dao.LoansDao;
 import com.svalero.dao.MoviesDao;
 import com.svalero.domain.Movie;
 
@@ -59,9 +60,12 @@ public class MovieDetailsServlet extends HttpServlet {
         try {
             Database.getInstance().useExtension(MoviesDao.class, dao -> dao.removeMovie(idMovie));
             response.sendRedirect(request.getContextPath() + "/listMovies.jsp");
+
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ServletException("Error eliminando la película", e);
+            throw new ServletException("Error eliminando la pelicula", e);
         }
     }
+
 }
+

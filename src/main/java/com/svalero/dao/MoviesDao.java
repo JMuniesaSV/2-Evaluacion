@@ -22,6 +22,10 @@ public interface MoviesDao {
     @UseRowMapper(MoviesMapper.class)
     List<Movie> getMoviesByFilter(@Bind("searchTerm") String searchTerm);
 
+    @SqlUpdate("DELETE FROM RESERVATIONS WHERE idMovie = :idMovie")
+    void deleteReservationsByMovieId(@Bind("idMovie") int idMovie);
+
+
     @SqlUpdate("INSERT INTO MOVIES (title, director, synopsis, trailer, quantity, path) VALUES (:title, :director, :synopsis, :trailer, :quantity, :path)")
     int addMovie(@Bind("title") String title, @Bind("director") String director, @Bind("synopsis") String synopsis, @Bind("trailer") String trailer, @Bind("quantity") int quantity, @Bind("path") String path);
 

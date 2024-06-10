@@ -22,14 +22,14 @@ public class LoanMovieServlet extends HttpServlet {
         }
         if (request.getParameter("idLoan") != null) {
             try {
-            Database.getInstance().inTransaction(handle -> {
-                int idLoan = Integer.parseInt(request.getParameter("idLoan"));
-                LoansDao loansDao = handle.attach(LoansDao.class);
-                java.sql.Date returnDate = new java.sql.Date(System.currentTimeMillis());
-                loansDao.returnLoanById(idLoan, returnDate);
-                return null;
+                Database.getInstance().inTransaction(handle -> {
+                    int idLoan = Integer.parseInt(request.getParameter("idLoan"));
+                    LoansDao loansDao = handle.attach(LoansDao.class);
+                    java.sql.Date returnDate = new java.sql.Date(System.currentTimeMillis());
+                    loansDao.returnLoanById(idLoan, returnDate);
+                    return null;
                 });
-            response.sendRedirect("listLoans");
+                response.sendRedirect("listLoans");
             } catch (Exception e) {
                 response.sendRedirect("error?message=" + URLEncoder.encode(e.getMessage(), StandardCharsets.UTF_8));
             }

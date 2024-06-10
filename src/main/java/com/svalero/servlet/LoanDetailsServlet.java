@@ -21,7 +21,7 @@ public class LoanDetailsServlet extends HttpServlet {
         try {
             Loan loan = Database.getInstance().withExtension(LoansDao.class, dao -> dao.getLoan(idLoan));
             request.setAttribute("loan", loan);
-            request.getRequestDispatcher("/loanDetail.jsp").forward(request, response);
+            request.getRequestDispatcher("/loanDetails.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             throw new ServletException("Error obteniendo los detalles del préstamo", e);
@@ -42,18 +42,20 @@ public class LoanDetailsServlet extends HttpServlet {
         int idLoan = Integer.parseInt(request.getParameter("idLoan"));
         int idMovie = Integer.parseInt(request.getParameter("idMovie"));
         int idUser = Integer.parseInt(request.getParameter("idUser"));
-        Date startDate = Date.valueOf(request.getParameter("startDate"));
-        Date expectedDate = Date.valueOf(request.getParameter("expectedDate"));
-        Date returnDate = request.getParameter("returnDate").isEmpty() ? null : Date.valueOf(request.getParameter("returnDate"));
+        Date newStartDate = Date.valueOf(request.getParameter("newStartDate"));
+        Date newExpectedDate = Date.valueOf(request.getParameter("newExpectedDate"));
+        Date newReturnDate = request.getParameter("newReturnDate") != null ? Date.valueOf(request.getParameter("newReturnDate")) : null;
 
         try {
-            Database.getInstance().useExtension(LoansDao.class, dao -> dao.updateLoan(idLoan, idMovie, idUser, startDate, expectedDate, returnDate));
+            Database.getInstance().useExtension(LoansDao.class, dao -> dao.updateLoan(idLoan, idMovie, idUser, newStartDate, newExpectedDate, newReturnDate));
             response.sendRedirect(request.getContextPath() + "/loanDetails?idLoan=" + idLoan);
         } catch (Exception e) {
             e.printStackTrace();
             throw new ServletException("Error actualizando el préstamo", e);
         }
     }
+
+
 
     private void deleteLoan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idLoan = Integer.parseInt(request.getParameter("idLoan"));

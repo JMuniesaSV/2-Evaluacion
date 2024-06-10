@@ -25,13 +25,13 @@ public class LoginServlet extends HttpServlet {
             throw new ServletException("Error cargando el login", e);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
+
         try {
             boolean emailExists = Database.getInstance().withExtension(UsersDao.class, dao -> {
                 return dao.emailExists(email);

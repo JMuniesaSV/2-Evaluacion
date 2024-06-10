@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phoneNumber");
         String password = request.getParameter("password");
-        
+
         try {
             boolean emailExists = Database.getInstance().withExtension(UsersDao.class, dao -> {
                 return dao.emailExists(email);
@@ -55,4 +55,3 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 }
-

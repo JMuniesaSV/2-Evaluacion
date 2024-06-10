@@ -20,14 +20,14 @@ public interface LoansDao {
     @UseRowMapper(LoansMapper.class)
     List<Loan> getLoansByUserAndFilter(@Bind("idUser") int idUser, @Bind("searchTerm") String searchTerm);
 
-    @SqlQuery("SELECT * FROM LOANS WHERE idLoan = ?")
+    @SqlQuery("SELECT l.*, m.title as movieTitle FROM LOANS l JOIN MOVIES m ON l.idMovie = m.idMovie WHERE l.idLoan = :idLoan")
     @UseRowMapper(LoansMapper.class)
-    Loan getLoan(int idLoan);
+    Loan getLoan(@Bind("idLoan") int idLoan);
 
     @SqlUpdate("INSERT INTO LOANS (idMovie, idUser, startDate, expectedDate) VALUES (?, ?, ?, ?)")
     void addLoan(int idMovie, int idUser, Date startDate, Date expectedDate);
 
-    @SqlUpdate("UPDATE LOANS SET idLoan = ?, idMovie = ?, idUser = ?, startDate = ?, expectedDate = ?, returnDate = ? WHERE idLoan = ?")
+    @SqlUpdate("UPDATE LOANS SET idMovie = ?, idUser = ?, startDate = ?, expectedDate = ?, returnDate = ? WHERE idLoan = ?")
     int updateLoan(int idLoan, int idMovie, int idUser, Date startDate, Date expectedDate, Date returnDate);
 
     @SqlUpdate("DELETE FROM LOANS WHERE idLoan = ?")

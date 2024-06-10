@@ -34,10 +34,10 @@
                 type: "POST",
                 data: formData,
                 success: function(response) {
-                    $("#result").html("<div class='alert alert-success' role='alert'>" + "Password changed." + "</div>");
+                    $("#result").html("<div class='alert alert-success' role='alert'>" + "Contraseña cambiada" + "</div>");
                 },
                 error: function(xhr) {
-                    $("#result").html("<div class='alert alert-danger' role='alert'>" + "Something went wrong" + "</div>");
+                    $("#result").html("<div class='alert alert-danger' role='alert'>" + "Algo salio mal" + "</div>");
                 }
             });
         });
